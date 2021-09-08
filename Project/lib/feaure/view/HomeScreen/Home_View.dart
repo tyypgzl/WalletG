@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/CustomWidget/AppBar.dart';
-import 'package:finance_app/feaure/view/CustomWidget/NavBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomAppBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomNavBar.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,18 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: BaseAppBar(
-          title: Text(
-            "WalletG",
-            style: GoogleFonts.nunito(
-              color: AppColor.splashTitleColor,
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          appBar: AppBar(),
-          widgets: []),
-      bottomNavigationBar: CurvedNavBar(0),
+      appBar:
+          CustomAppBar(title: Text("WalletG"), appBar: AppBar(), widgets: []),
+      bottomNavigationBar: CustomNavBar(pageIndex: 0),
       body: Container(
         height: size.height,
         width: size.width,

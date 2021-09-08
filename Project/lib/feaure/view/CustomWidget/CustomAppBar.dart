@@ -1,12 +1,12 @@
 import 'package:finance_app/constants/color_theme.dart';
 import 'package:flutter/material.dart';
 
-class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Text title;
   final AppBar appBar;
   final List<Widget> widgets;
 
-  const BaseAppBar(
+  const CustomAppBar(
       {required this.title, required this.appBar, required this.widgets});
 
   @override

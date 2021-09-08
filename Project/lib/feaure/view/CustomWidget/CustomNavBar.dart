@@ -1,26 +1,21 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/HomeScreen/bodyScreens/card_body.dart';
-import 'package:finance_app/feaure/view/HomeScreen/bodyScreens/home_body.dart';
-import 'package:finance_app/feaure/view/HomeScreen/bodyScreens/transactions_body.dart';
+import 'package:finance_app/feaure/view/HomeScreen/Card_View.dart';
+import 'package:finance_app/feaure/view/HomeScreen/Home_View.dart';
+import 'package:finance_app/feaure/view/HomeScreen/Transactions_View.dart.dart';
 import 'package:flutter/material.dart';
 
-class curvedNavBar extends StatefulWidget {
+class CustomNavBar extends StatelessWidget {
   int pageIndex;
-  curvedNavBar(this.pageIndex);
+  CustomNavBar({required this.pageIndex});
 
-  @override
-  _curvedNavBarState createState() => _curvedNavBarState();
-}
-
-class _curvedNavBarState extends State<curvedNavBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
       color: AppColor.homeAppBar,
       animationDuration: Duration(milliseconds: 500),
       backgroundColor: AppColor.homeBG,
-      index: widget.pageIndex,
+      index: pageIndex,
       onTap: (index) {
         switch (index) {
           case 0:

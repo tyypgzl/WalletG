@@ -1,6 +1,6 @@
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/CustomWidget/AppBar.dart';
-import 'package:finance_app/feaure/view/CustomWidget/NavBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomAppBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,12 +20,14 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
 
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: BaseAppBar(
+      appBar: CustomAppBar(
         appBar: AppBar(),
         title: Text("WalletG"),
         widgets: [],
       ),
-      bottomNavigationBar: CurvedNavBar(2),
+      bottomNavigationBar: CustomNavBar(
+        pageIndex: 2,
+      ),
       body: Container(
         child: Column(
           children: [

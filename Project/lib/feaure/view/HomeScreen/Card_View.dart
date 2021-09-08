@@ -1,6 +1,6 @@
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/CustomWidget/AppBar.dart';
-import 'package:finance_app/feaure/view/CustomWidget/NavBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomAppBar.dart';
+import 'package:finance_app/feaure/view/CustomWidget/CustomNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,70 +17,71 @@ class _CardScreenState extends State<CardScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: BaseAppBar(
-        appBar: AppBar(),
-        title: Text(
-          "WalletG",
-          style: GoogleFonts.nunito(
-            color: AppColor.splashTitleColor,
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
+        appBar: CustomAppBar(
+          appBar: AppBar(),
+          title: Text(
+            "WalletG",
+            style: GoogleFonts.nunito(
+              color: AppColor.splashTitleColor,
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+            ),
           ),
+          widgets: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),
-        widgets: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
-      ),
-      body: Container(
-        width: size.width,
-        height: size.height,
-        color: AppColor.homeBG,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(220, 45),
-                    fixedSize: Size(250, 50),
-                    primary: Colors.black45,
-                    onPrimary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                    ),
-                  ),
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text("Add New Card"),
-                ),
-                ElevatedButton(
+        body: Container(
+          width: size.width,
+          height: size.height,
+          color: AppColor.homeBG,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(65, 45),
-                      fixedSize: Size(70, 50),
+                      minimumSize: Size(220, 45),
+                      fixedSize: Size(250, 50),
                       primary: Colors.black45,
                       onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
                       ),
                     ),
                     onPressed: () {},
-                    child: Icon(Icons.qr_code_scanner))
-              ],
-            ),
-            Flexible(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return getCardWidget(cardRotate, size);
-                },
+                    icon: Icon(Icons.add),
+                    label: Text("Add New Card"),
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(65, 45),
+                        fixedSize: Size(70, 50),
+                        primary: Colors.black45,
+                        onPrimary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Icon(Icons.qr_code_scanner))
+                ],
               ),
-            )
-          ],
+              Flexible(
+                child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return getCardWidget(cardRotate, size);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: CurvedNavBar(1),
-    );
+        bottomNavigationBar: CustomNavBar(
+          pageIndex: 1,
+        ));
   }
 }
 
