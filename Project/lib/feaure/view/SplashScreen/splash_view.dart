@@ -1,5 +1,7 @@
 import 'package:finance_app/constants/color_theme.dart';
+import 'package:finance_app/feaure/view/HomeScreen/Home_View.dart';
 import 'package:finance_app/feaure/view/OnboardingScreen/onboarding_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,11 +13,26 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  var authControl = false;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   @override
   void initState() {
+    firebaseAuth.authStateChanges().listen((event) {
+      if (event == null) {
+        authControl = false;
+      } else {
+        authControl = true;
+      }
+    });
     Future.delayed(Duration(milliseconds: 3500), () {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => OnboardView()));
+      if (authControl) {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => HomeScreen()));
+      } else {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => OnboardView()));
+      }
     });
     super.initState();
   }

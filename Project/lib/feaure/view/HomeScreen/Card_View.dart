@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_app/constants/color_theme.dart';
 import 'package:finance_app/feaure/view/CustomWidget/CustomAppBar.dart';
 import 'package:finance_app/feaure/view/CustomWidget/CustomNavBar.dart';
+import 'package:finance_app/feaure/view/HomeScreen/add_card_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +13,8 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
+  CollectionReference _reference =
+      FirebaseFirestore.instance.collection("Cards");
   bool cardRotate = false;
   @override
   Widget build(BuildContext context) {
@@ -19,15 +23,7 @@ class _CardScreenState extends State<CardScreen> {
     return Scaffold(
         appBar: CustomAppBar(
           appBar: AppBar(),
-          title: Text(
-            "WalletG",
-            style: GoogleFonts.nunito(
-              color: AppColor.splashTitleColor,
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          widgets: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
+          widgets: [],
         ),
         body: Container(
           width: size.width,
@@ -50,7 +46,14 @@ class _CardScreenState extends State<CardScreen> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddCardView(),
+                        ),
+                      );
+                    },
                     icon: Icon(Icons.add),
                     label: Text("Add New Card"),
                   ),
@@ -69,10 +72,39 @@ class _CardScreenState extends State<CardScreen> {
                 ],
               ),
               Flexible(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return getCardWidget(cardRotate, size);
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: _reference.snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text("Hata oluştu. Error:${snapshot.error}"),
+                      );
+                    } else {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        List<DocumentSnapshot<Map>> docList =
+                            snapshot.data.docs;
+                        return SizedBox(
+                          child: ListView.builder(
+                            itemCount: docList.length,
+                            itemBuilder: (context, index) {
+                              return CreditCardWidget(
+                                cardNumber:
+                                    docList[index].data()!['cardNumber'],
+                                expiryDate: docList[index].data()!['cardDate'],
+                                cardHolderName:
+                                    docList[index].data()!['cardHolder'],
+                                cvvCode: docList[index].data()!['cardCvv'],
+                                showBackView: false,
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    }
                   },
                 ),
               )
@@ -86,15 +118,13 @@ class _CardScreenState extends State<CardScreen> {
 }
 
 CreditCardWidget getCardWidget(bool cardRotate, Size size) => CreditCardWidget(
-      cardBgColor: AppColor.creditCardBG,
+      cardBgColor: Colors.lightBlueAccent,
       obscureCardCvv: false,
       obscureCardNumber: false,
       width: size.width * .9,
       height: size.height * .27,
       textStyle: GoogleFonts.nunito(
-          color: AppColor.creditCardText,
-          fontSize: 21,
-          fontWeight: FontWeight.w800),
+          color: Colors.black, fontSize: 21, fontWeight: FontWeight.w800),
       cardType: CardType.mastercard,
       cardNumber: "1234 5678 9012 3456",
       expiryDate: "10/24",

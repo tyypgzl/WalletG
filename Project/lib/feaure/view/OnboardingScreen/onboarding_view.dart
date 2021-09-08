@@ -1,5 +1,5 @@
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/HomeScreen/Home_View.dart';
+import 'package:finance_app/feaure/view/AuthScreen/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -34,7 +34,7 @@ class _OnboardViewState extends State<OnboardView> {
         ),
         onDone: () {
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => HomeScreen()));
+              MaterialPageRoute(builder: (context) => LoginView()));
         },
         pages: [
           PageViewModel(

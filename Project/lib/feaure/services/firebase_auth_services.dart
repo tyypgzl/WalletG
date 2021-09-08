@@ -28,7 +28,8 @@ class AuthenticationService {
     }
   }
 
-  Future<bool> signOut(bool control) async {
+  Future<bool> signOut() async {
+    bool control = false;
     try {
       await _firebaseAuth.signOut();
       control = true;

@@ -13,16 +13,14 @@ class TransactionsScreen extends StatefulWidget {
 }
 
 class _TransactionsScreenState extends State<TransactionsScreen> {
-  final _firestore = FirebaseFirestore.instance;
+  CollectionReference _reference =
+      FirebaseFirestore.instance.collection("Transactions");
   @override
   Widget build(BuildContext context) {
-    CollectionReference transactionsRef = _firestore.collection("Transactions");
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: CustomAppBar(
         appBar: AppBar(),
-        title: Text("WalletG"),
         widgets: [],
       ),
       bottomNavigationBar: CustomNavBar(
@@ -68,10 +66,17 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           size: 32,
                         ),
                       ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.download,
+                          color: AppColor.creditCardText,
+                        ),
+                      ),
                     ],
                   ),
                   StreamBuilder<QuerySnapshot>(
-                    stream: transactionsRef.snapshots(),
+                    stream: _reference.snapshots(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasError) {
                         return Center(
@@ -88,24 +93,17 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                               snapshot.data.docs;
                           return SizedBox(
                             width: size.width,
-                            height: size.height * .3,
+                            height: size.height * .60,
                             child: ListView.builder(
                               itemCount: docList.length,
                               itemBuilder: (context, index) {
-                                return ListTile(
-                                  trailing: Text(
-                                    docList[index].data()!['price'].toString() +
-                                        " \$",
-                                    style: getStyle,
-                                  ),
-                                  title: Text(
-                                    docList[index].data()!['name'],
-                                    style: getStyle,
-                                  ),
-                                  subtitle: Text(
-                                    docList[index].data()!['date'],
-                                    style: getStyle,
-                                  ),
+                                return getTransactions(
+                                  companyName: docList[index].data()!['name'],
+                                  date: docList[index].data()!['date'],
+                                  price: docList[index]
+                                          .data()!['price']
+                                          .toString() +
+                                      " \$",
                                 );
                               },
                             ),
@@ -113,10 +111,6 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                         }
                       }
                     },
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.download),
                   ),
                 ],
               ),

@@ -21,8 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar:
-          CustomAppBar(title: Text("WalletG"), appBar: AppBar(), widgets: []),
+      appBar: CustomAppBar(appBar: AppBar(), widgets: []),
       bottomNavigationBar: CustomNavBar(pageIndex: 0),
       body: Container(
         height: size.height,
@@ -37,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               margin: EdgeInsets.all(14),
               padding: EdgeInsets.all(10),
-              height: size.height * .4,
+              height: size.height * .35,
               child: LineChart(
                 LineChartData(
                   lineTouchData: lineTouchData1,
@@ -56,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               margin: EdgeInsets.all(14),
               padding: EdgeInsets.all(10),
               width: size.width,
-              height: size.height * .28,
+              height: size.height * .38,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: AppColor.cardBG,
@@ -75,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 8,
                   ),
                   Container(
-                    width: 350,
-                    height: 60,
+                    width: size.width * .9,
+                    height: size.height * .09,
                     decoration: BoxDecoration(
                       color: AppColor.ButtonContainerBG,
                       borderRadius: BorderRadius.circular(30),
@@ -115,7 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             elevation: 0,
-                            fixedSize: Size(150, 45),
+                            fixedSize:
+                                Size(size.width * .38, size.height * .025),
                             onPrimary: Colors.black.withOpacity(.7),
                             primary: _isSelectedButton
                                 ? AppColor.UnselectedButton

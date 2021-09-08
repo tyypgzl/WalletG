@@ -1,12 +1,12 @@
-class Card {
+class Cards {
   String? number;
   String? name;
   String? cvv;
   String? date;
 
-  Card({this.number, this.name, this.cvv, this.date});
+  Cards({this.number, this.name, this.cvv, this.date});
 
-  Card.fromJson(Map<String, dynamic> json) {
+  Cards.fromJson(Map<String, dynamic> json) {
     number = json['number'];
     name = json['name'];
     cvv = json['cvv'];

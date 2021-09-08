@@ -5,13 +5,16 @@ import 'package:finance_app/feaure/view/HomeScreen/Home_View.dart';
 import 'package:finance_app/feaure/view/HomeScreen/Transactions_View.dart.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomNavBar extends StatelessWidget {
   int pageIndex;
   CustomNavBar({required this.pageIndex});
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return CurvedNavigationBar(
+      height: size.height * .08,
       color: AppColor.homeAppBar,
       animationDuration: Duration(milliseconds: 500),
       backgroundColor: AppColor.homeBG,
