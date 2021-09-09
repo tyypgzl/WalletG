@@ -39,7 +39,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                   BoxShadow(
                       color: Colors.black12, blurRadius: 1.5, spreadRadius: 3),
                 ],
-                color: AppColor.cardBG,
+                color: AppColor.primaryColorWhite,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -55,14 +55,14 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                         style: GoogleFonts.nunito(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
-                            color: AppColor.creditCardText),
+                            color: AppColor.primaryColorBlue),
                       ),
                       Spacer(),
                       IconButton(
                         onPressed: () {},
                         icon: Icon(
                           Icons.keyboard_arrow_down_outlined,
-                          color: AppColor.creditCardText,
+                          color: AppColor.primaryColorBlue,
                           size: 32,
                         ),
                       ),
@@ -70,7 +70,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                         onPressed: () {},
                         icon: Icon(
                           Icons.download,
-                          color: AppColor.creditCardText,
+                          color: AppColor.primaryColorBlue,
                         ),
                       ),
                     ],
@@ -144,14 +144,14 @@ Widget getTransactions(
                 style: GoogleFonts.nunito(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    color: AppColor.creditCardText),
+                    color: AppColor.primaryColorBlue),
               ),
               Text(
                 date,
                 style: GoogleFonts.nunito(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: AppColor.creditCardText),
+                    color: AppColor.primaryColorBlue),
               ),
             ],
           ),
@@ -160,7 +160,7 @@ Widget getTransactions(
             style: GoogleFonts.nunito(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: AppColor.creditCardText),
+                color: AppColor.primaryColorBlue),
           ),
         ],
       ),

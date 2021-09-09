@@ -28,7 +28,7 @@ class _CardScreenState extends State<CardScreen> {
         body: Container(
           width: size.width,
           height: size.height,
-          color: AppColor.homeBG,
+          color: AppColor.primaryColorWhite,
           child: Column(
             children: [
               Row(

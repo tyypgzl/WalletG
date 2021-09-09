@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(Duration(milliseconds: 3500), () {
       if (authControl) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomeScreen()));
+            MaterialPageRoute(builder: (context) => HomeView()));
       } else {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => OnboardView()));
@@ -47,7 +47,6 @@ class _SplashViewState extends State<SplashView> {
               AppColor.gradient1,
               AppColor.gradient2,
               AppColor.gradient3,
-              AppColor.gradient4,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -57,12 +56,10 @@ class _SplashViewState extends State<SplashView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                "assets/images/wallet.svg",
-                fit: BoxFit.cover,
-                width: 150,
-                color: Colors.white,
-              ),
+              SvgPicture.asset("assets/images/wallet.svg",
+                  fit: BoxFit.cover,
+                  width: 150,
+                  color: AppColor.splashTitleColor),
               SizedBox(
                 height: 70,
               ),
@@ -72,7 +69,7 @@ class _SplashViewState extends State<SplashView> {
                     "WalletG",
                     speed: Duration(milliseconds: 500),
                     textStyle: GoogleFonts.nunito(
-                      color: Colors.white,
+                      color: AppColor.splashTitleColor,
                       fontSize: 40,
                       fontWeight: FontWeight.w700,
                     ),
@@ -86,10 +83,3 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
- /* Text(
-                "WalletG",
-                style: GoogleFonts.nunito(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700),
-              ), */

@@ -34,9 +34,7 @@ class _LoginViewState extends State<LoginView> {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(
-                height: 140,
-              ),
+              SizedBoxHeight(140.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -63,9 +61,7 @@ class _LoginViewState extends State<LoginView> {
                 style: GoogleFonts.nunito(
                     fontSize: 28, fontWeight: FontWeight.w700),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBoxHeight(20.0),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -113,9 +109,7 @@ class _LoginViewState extends State<LoginView> {
                   controller: tfPassword,
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBoxHeight(20.0),
               ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
@@ -126,7 +120,7 @@ class _LoginViewState extends State<LoginView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) => HomeView()));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
@@ -149,9 +143,7 @@ class _LoginViewState extends State<LoginView> {
                       fontSize: 24, fontWeight: FontWeight.w600),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBoxHeight(20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -182,3 +174,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+
+Widget SizedBoxHeight(double height) => SizedBox(
+      height: height,
+    );

@@ -15,15 +15,15 @@ class CustomNavBar extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return CurvedNavigationBar(
       height: size.height * .08,
-      color: AppColor.homeAppBar,
+      color: AppColor.primaryColorBlueAccent,
       animationDuration: Duration(milliseconds: 500),
-      backgroundColor: AppColor.homeBG,
+      backgroundColor: AppColor.primaryColorWhite,
       index: pageIndex,
       onTap: (index) {
         switch (index) {
           case 0:
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                .push(MaterialPageRoute(builder: (context) => HomeView()));
             break;
           case 1:
             Navigator.of(context)

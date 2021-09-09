@@ -8,12 +8,12 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeView extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeViewState extends State<HomeView> {
   bool _isSelectedButton = false;
 
   @override
@@ -26,12 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         height: size.height,
         width: size.width,
-        color: AppColor.homeBG,
+        color: AppColor.primaryColorWhite,
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                color: AppColor.cardBG,
+                color: AppColor.primaryColorWhite,
                 borderRadius: BorderRadius.circular(20),
               ),
               margin: EdgeInsets.all(14),
@@ -58,14 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
               height: size.height * .38,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: AppColor.cardBG,
+                color: AppColor.primaryColorWhite,
               ),
               child: Column(
                 children: [
                   Text(
                     "Exchange",
                     style: GoogleFonts.nunito(
-                      color: AppColor.homeScreenTitle,
+                      color: AppColor.primaryColorBlue,
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                     ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: size.width * .9,
                     height: size.height * .09,
                     decoration: BoxDecoration(
-                      color: AppColor.ButtonContainerBG,
+                      color: AppColor.primaryColorOrangeAccent,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Row(
@@ -92,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             fixedSize: Size(150, 45),
                             onPrimary: Colors.black.withOpacity(.7),
                             primary: _isSelectedButton
-                                ? AppColor.SelectedButton
-                                : AppColor.UnselectedButton,
+                                ? AppColor.primaryColorOrange
+                                : AppColor.primaryColorOrangeAccent,
                           ),
                           onPressed: () {
                             setState(() {
@@ -118,8 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Size(size.width * .38, size.height * .025),
                             onPrimary: Colors.black.withOpacity(.7),
                             primary: _isSelectedButton
-                                ? AppColor.UnselectedButton
-                                : AppColor.SelectedButton,
+                                ? AppColor.primaryColorOrangeAccent
+                                : AppColor.primaryColorOrange,
                           ),
                           onPressed: () {
                             setState(() {
@@ -240,7 +240,7 @@ SideTitles leftTitles({required GetTitleFunction getTitles}) => SideTitles(
       interval: 1,
       reservedSize: 40,
       getTextStyles: (context, value) => const TextStyle(
-        color: AppColor.homeScreenTitle,
+        color: AppColor.primaryColorBlue,
         fontWeight: FontWeight.bold,
         fontSize: 14,
       ),
@@ -252,7 +252,7 @@ SideTitles get bottomTitles => SideTitles(
       margin: 10,
       interval: 1,
       getTextStyles: (context, value) => const TextStyle(
-        color: AppColor.homeScreenTitle,
+        color: AppColor.primaryColorBlue,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
@@ -273,8 +273,8 @@ FlGridData get gridData => FlGridData(show: false);
 
 FlBorderData get borderData => FlBorderData(
       show: true,
-      border: const Border(
-        bottom: BorderSide(color: AppColor.homeScreenTitle, width: 4),
+      border: Border(
+        bottom: BorderSide(color: AppColor.primaryColorBlueAccent, width: 4),
         left: BorderSide(color: Colors.transparent),
         right: BorderSide(color: Colors.transparent),
         top: BorderSide(color: Colors.transparent),

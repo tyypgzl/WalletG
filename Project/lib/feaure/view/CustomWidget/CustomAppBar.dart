@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         AuthenticationService(FirebaseAuth.instance);
     return AppBar(
       centerTitle: true,
-      iconTheme: IconThemeData(color: AppColor.creditCardText, size: 40),
+      iconTheme: IconThemeData(color: AppColor.primaryColorBlue, size: 40),
       elevation: 0,
       title: Text(
         "WalletG",
@@ -27,7 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontWeight: FontWeight.w700,
         ),
       ),
-      backgroundColor: AppColor.homeBG,
+      backgroundColor: AppColor.primaryColorWhite,
       actions: [
         IconButton(
           onPressed: () async {
@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: Icon(
             Icons.power_settings_new,
-            color: AppColor.creditCardText,
+            color: AppColor.primaryColorBlue,
             size: 32,
           ),
         ),
