@@ -1,6 +1,6 @@
 import 'package:finance_app/constants/color_theme.dart';
 import 'package:finance_app/feaure/services/firebase_auth_services.dart';
-import 'package:finance_app/feaure/view/AuthScreen/login_view.dart';
+import 'package:finance_app/feaure/view/AuthScreen/loginView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,8 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
   final List<Widget> widgets;
+  final String title;
 
-  const CustomAppBar({required this.appBar, required this.widgets});
+  const CustomAppBar(
+      {required this.appBar, required this.widgets, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +19,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         AuthenticationService(FirebaseAuth.instance);
     return AppBar(
       centerTitle: true,
-      iconTheme: IconThemeData(color: AppColor.primaryColorBlue, size: 40),
+      iconTheme: IconThemeData(color: AppColor.secondaryColor, size: 40),
       elevation: 0,
       title: Text(
-        "WalletG",
+        title,
         style: GoogleFonts.nunito(
-          color: AppColor.splashTitleColor,
+          color: AppColor.secondaryColor,
           fontSize: 28,
           fontWeight: FontWeight.w700,
         ),
       ),
-      backgroundColor: AppColor.primaryColorWhite,
+      backgroundColor: AppColor.primaryColor,
       actions: [
         IconButton(
           onPressed: () async {
@@ -48,7 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: Icon(
             Icons.power_settings_new,
-            color: AppColor.primaryColorBlue,
+            color: AppColor.secondaryColor,
             size: 32,
           ),
         ),

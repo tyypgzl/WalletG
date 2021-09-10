@@ -1,5 +1,5 @@
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/AuthScreen/login_view.dart';
+import 'package:finance_app/feaure/view/AuthScreen/loginView.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -13,13 +13,15 @@ class OnboardView extends StatefulWidget {
 }
 
 class _OnboardViewState extends State<OnboardView> {
+  bool isShowButton = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IntroductionScreen(
-        showSkipButton: true,
-        showDoneButton: true,
-        showNextButton: true,
+        showSkipButton: isShowButton,
+        showDoneButton: isShowButton,
+        showNextButton: isShowButton,
         done: Text(
           "Done",
           style: getButtonStyle(),
@@ -62,25 +64,8 @@ class _OnboardViewState extends State<OnboardView> {
             image: buildImage("assets/images/safe.svg"),
           ),
         ],
-        dotsDecorator: DotsDecorator(
-          activeColor: AppColor.dotActive,
-          color: AppColor.dotPAssive,
-          activeSize: Size(24, 10),
-          size: Size(10, 10),
-          activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
-          ),
-        ),
-        dotsContainerDecorator: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColor.gradient3,
-              AppColor.gradient2,
-            ],
-          ),
-        ),
+        dotsDecorator: getDots(),
+        dotsContainerDecorator: getDotsDecorations(),
       ),
     );
   }
@@ -97,11 +82,11 @@ PageDecoration buildPageDecorations() => PageDecoration(
       titleTextStyle: GoogleFonts.nunito(
           fontSize: 32,
           fontWeight: FontWeight.w700,
-          color: AppColor.primaryColorWhite),
+          color: AppColor.secondaryColor),
       bodyTextStyle: GoogleFonts.nunito(
           fontSize: 22,
           fontWeight: FontWeight.w400,
-          color: AppColor.primaryColorWhite),
+          color: AppColor.secondaryColor),
       descriptionPadding: EdgeInsets.all(8),
       imageFlex: 1,
       footerPadding: EdgeInsets.all(1),
@@ -122,3 +107,24 @@ TextStyle getButtonStyle() => GoogleFonts.nunito(
     color: AppColor.primaryColorYellow,
     fontSize: 24,
     fontWeight: FontWeight.w800);
+
+BoxDecoration getDotsDecorations() => BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          AppColor.gradient3,
+          AppColor.gradient2,
+        ],
+      ),
+    );
+
+DotsDecorator getDots() => DotsDecorator(
+      activeColor: AppColor.dotActive,
+      color: AppColor.dotPAssive,
+      activeSize: Size(24, 10),
+      size: Size(10, 10),
+      activeShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(28),
+      ),
+    );

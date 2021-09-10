@@ -1,6 +1,6 @@
 import 'package:finance_app/constants/color_theme.dart';
-import 'package:finance_app/feaure/view/HomeScreen/Home_View.dart';
-import 'package:finance_app/feaure/view/OnboardingScreen/onboarding_view.dart';
+import 'package:finance_app/feaure/view/HomeScreen/homeView.dart';
+import 'package:finance_app/feaure/view/OnboardingScreen/onboardingView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
         authControl = true;
       }
     });
-    Future.delayed(Duration(milliseconds: 3500), () {
+    Future.delayed(Duration(milliseconds: 3790), () {
       if (authControl) {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => HomeView()));
@@ -57,9 +57,7 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset("assets/images/wallet.svg",
-                  fit: BoxFit.cover,
-                  width: 150,
-                  color: AppColor.splashTitleColor),
+                  fit: BoxFit.cover, width: 140, color: AppColor.splashColor),
               SizedBox(
                 height: 70,
               ),
@@ -67,9 +65,9 @@ class _SplashViewState extends State<SplashView> {
                 animatedTexts: [
                   WavyAnimatedText(
                     "WalletG",
-                    speed: Duration(milliseconds: 500),
+                    speed: Duration(milliseconds: 400),
                     textStyle: GoogleFonts.nunito(
-                      color: AppColor.splashTitleColor,
+                      color: AppColor.splashColor,
                       fontSize: 40,
                       fontWeight: FontWeight.w700,
                     ),

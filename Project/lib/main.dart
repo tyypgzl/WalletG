@@ -1,4 +1,4 @@
-import 'package:finance_app/feaure/view/SplashScreen/splash_view.dart';
+import 'package:finance_app/feaure/view/SplashScreen/splashView.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
