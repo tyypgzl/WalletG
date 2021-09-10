@@ -25,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
         authControl = true;
       }
     });
-    Future.delayed(Duration(milliseconds: 3790), () {
+    Future.delayed(Duration(milliseconds: 23790), () {
       if (authControl) {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => HomeView()));
